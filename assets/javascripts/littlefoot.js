@@ -24,7 +24,7 @@
         })
 
         document.addEventListener("click", self.click.bind(self))
-        document.querySelector('div.footnotes').remove()
+        document.querySelectorAll('div.footnotes').forEach(function(note) { note.remove(); } )
       }
     },
 
@@ -59,7 +59,7 @@
 
       // Only reposition this every 50 miliseconds to avoid constant repainting
       window.clearTimeout(self.timeout)
-      self.timeout = window.setTimeout( function() { 
+      self.timeout = window.setTimeout( function() {
         self.sizeFootnote()
         self.positionFootnote()
       }, 50)
@@ -97,9 +97,9 @@
 
         this.footnote.el = null
 
-        setTimeout(function(){ 
+        setTimeout(function(){
           footnote.classList.remove('is-open')
-          popover.classList.add('is-hidden') 
+          popover.classList.add('is-hidden')
         }, 250)
       }
     },
@@ -184,7 +184,7 @@
             +'<svg class="littlefoot-graphic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 98"><path class="littlefoot-graphic-path" fill="#fff" d="M200 25c0-13.8-11.2-25-25-25H25C11.2 0 0 11.2 0 25v48c0 13.8 11.2 25 25 25h150c13.8 0 25-11.2 25-25V25zM50.5 64.3c-8.3 0-15-6.7-15-15s6.7-15 15-15 15 6.7 15 15-6.8 15-15 15zm50 0c-8.3 0-15-6.7-15-15s6.7-15 15-15 15 6.7 15 15-6.8 15-15 15zm49 0c-8.3 0-15-6.7-15-15s6.7-15 15-15 15 6.7 15 15-6.8 15-15 15z"/></svg>'
           +'</button>'
       },
-      
+
       popover: function (el) {
         return '<aside class="littlefoot-popover is-hidden">'
             +'<div class="littlefoot-footnote">'
